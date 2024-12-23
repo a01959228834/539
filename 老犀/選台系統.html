@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選台系統</title>
+    <meta name="description" content="選台系統">
+    <link rel="stylesheet" href="./選台系統_files/lion.css">
+    <script src="./選台系統_files/lionn.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- 內嵌 CSS 樣式 -->
+    <style>
+        /* 修改所有字體顏色為 #F7EB0A */
+        h2,
+        p,
+        button,
+        .warning,
+        input {
+            color: #F7EB0A;
+            /* 設置字體顏色為黃色 #F7EB0A */
+        }
+
+        button {
+            color: rgb(0, 0, 0);
+            background-color: #ffd325;
+            border: none;
+            /* 去除邊框 */
+            padding: 10px 20px;
+            /* 設定內邊距 */
+            font-size: 16px;
+            /* 字體大小 */
+            cursor: pointer;
+            /* 鼠標懸停時顯示為手型 */
+        }
+
+        /* 修改警告文字顏色 */
+        .warning {
+            color: red;
+            /* 警告文字顏色設為紅色 */
+        }
+    </style>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" class="bg">
+
+    <div class="matrix" id="matrixContainer"></div>
+    <!-- 會員帳號和IP輸入 -->
+    <!-- 頂部黃色通知欄 -->
+    <div id="notificationBar">
+        老犀線下會員專用
+    </div>
+    <div class="container input-container" id="ipContainer">
+        <h2>老犀線下會員帳號</h2>
+        <input type="text" id="accountInput" placeholder="請輸入會員帳號">
+
+        <h2>當前裝置IP</h2>
+        <input type="text" id="ipInput" placeholder="請輸入IP">
+        <!-- 新增房號輸入框 -->
+        <h2>輸入房號</h2>
+        <input type="text" id="roomNumberInput" placeholder="請輸入房號">
+        <h2>輸入點數</h2>
+        <input type="text" id="roomNumberInput" placeholder="請輸入點數">
+        <h2>選擇遊戲</h2>
+        <select id="systemProvider">
+            <option value="富遊電子-戰神賽特">富遊電子-戰神賽特</option>
+            <option value="富遊電子-忍">富遊電子-忍</option>
+            <option value="富遊電子-強棒HOMERUN">富遊電子-強棒HOMERUN</option>
+            <option value="富遊電子-神鬼戰士">富遊電子-神鬼戰士</option>
+            <option value="富遊電子-魔龍傳奇">富遊電子-魔龍傳奇</option>
+            <option value="富遊電子-祕寶探險">富遊電子-祕寶探險</option>
+            <option value="富遊電子-異星進化UpUp">富遊電子-異星進化UpUp</option>
+            <option value="RSG-雷神之鎚">RSG-雷神之鎚</option>
+            <option value="RSG-戰神呂布">RSG-戰神呂布</option>
+        </select>
+        <!-- 新增自動分析優化按鈕 -->
+        <button onclick="startOptimization()">自動分析優化（雷神之鎚、戰神呂布專用）</button>
+        <button onclick="confirmSelection()">確定</button><br><br>
+        <p class="warning">!!請先打開遊戲 否則無效!!</p>
+    </div>
+
+    <div class="container" id="resultContainer" style="display: none;">
+        <h2 id="initializingText">AI系統優化中</h2>
+        <p id="countdownText" class="highlight"></p>
+        <p id="loadingStatus"></p>
+        <div id="progressContainer" style="display: none;">
+            <div id="progressBar"></div>
+            <p id="progressText"></p>
+        </div>
+        <p id="warningText"></p>
+        <p id="explosionRateText"></p>
+        <p id="suggestedAmountText"></p>
+        <p id="ipDisplayText"></p>
+        <p id="roomNumberDisplayText"></p> <!-- 顯示房號 -->
+        <p id="providerDisplayText"></p>
+        <p id="gameCodeText"></p>
+        <p id="gameDisplayText"></p>
+
+        <button id="resetButton" onclick="resetRate()">重置</button>
+    </div>
+    <div id="marqueeContainer"></div>
+    <div id="optimizationMessage" style="display: none;"></div> <!-- 優化信息 -->
+    <div id="codeBox"></div>
+    <div id="winnerMessages"></div>
+    <!--GPT-->
+    <div id="chatButtonContainer">
+        <button id="chatGPTButton">彩票預測</button>
+    </div>
+    <div id="chatGPTWindow" style="display: none;">
+        <div id="chatHeader">
+            <h3>算牌大神老犀</h3>
+            <button id="closeChatWindow">X</button>
+        </div>
+        <div id="chatContent">
+            <p>我是算牌大神老犀，歡迎跟我聊天幫您發大財！<br>如要查詢539輸入 : 今彩539 西元年月 例:今彩539 2024年12月<br>如要預測最新一期請輸入 : 預測最新一期539號碼</p>
+        </div>
+        <div id="chatInputContainer">
+            <input type="text" id="chatInput" placeholder="輸入訊息...">
+            <button id="sendChat">送出</button>
+        </div>
+    </div>
+    
+    
+</body>
+
+</html>
