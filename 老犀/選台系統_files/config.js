@@ -1,0 +1,1 @@
+const API_KEY = "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"; // 替換為您的 API Key

@@ -390,6 +390,7 @@ function getIPAddress() {
 document.addEventListener("DOMContentLoaded", () => {
     getIPAddress();
 });
+
 //GPT
 document.addEventListener("DOMContentLoaded", () => {
     const chatButton = document.getElementById("chatGPTButton");
@@ -399,7 +400,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatInput = document.getElementById("chatInput");
     const sendChatButton = document.getElementById("sendChat");
 
-    const apiKey = "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";
     const endpoint = "https://api.openai.com/v1/chat/completions";
 
     let isRequesting = false;
@@ -421,7 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${apiKey}`,
+                    "Authorization": `Bearer ${API_KEY}`,
                 },
                 body: JSON.stringify({
                     model: "gpt-4",
