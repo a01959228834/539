@@ -399,17 +399,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatInput = document.getElementById("chatInput");
     const sendChatButton = document.getElementById("sendChat");
 
-    const apiKey = "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";
+    const apiKey = "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";
     const endpoint = "https://api.openai.com/v1/chat/completions";
 
     let isRequesting = false;
 
-    // 顯示聊天窗口
+    // 顯示全螢幕聊天視窗
     chatButton.addEventListener("click", () => {
         chatWindow.style.display = "flex";
     });
 
-    // 關閉聊天窗口
+    // 關閉全螢幕聊天視窗
     closeChatButton.addEventListener("click", () => {
         chatWindow.style.display = "none";
     });

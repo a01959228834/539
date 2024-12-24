@@ -306,17 +306,18 @@ button:hover {
 
 #chatGPTWindow {
     position: fixed;
-    bottom: 125px;
-    right: 20px;
-    width: 450px;
-    height: 600px;
-    background-color: #000;
-    border: 2px solid #ffd325;
-    border-radius: 10px;
-    z-index: 1001;
-    display: flex;
+    top: 0;
+    left: 0;
+    width: 100vw; /* 占滿螢幕寬度 */
+    height: 100vh; /* 占滿螢幕高度 */
+    background-color: rgba(0, 0, 0, 0.9); /* 背景變深 */
+    z-index: 9999;
+    display: none; /* 預設隱藏 */
     flex-direction: column;
-    color: #ffd325;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
 }
 
 #chatHeader {
@@ -327,7 +328,7 @@ button:hover {
     background-color: #ffd325;
     color: #000;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     white-space: nowrap; /* 禁止換行 */
 }
 
